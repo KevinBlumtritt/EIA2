@@ -1,9 +1,13 @@
-
-function Funktion(): void {
-var person = prompt("Bitte gib deinen Namen ein");
-
-if (person != null) {
-    document.getElementById("demo").innerHTML =
-    "Moin " + person + "! Alles klar?";
+namespace Aufgabe00 {
+    function Funktion(): void {
+        var person: string = prompt("Bitte gib deinen Namen ein");
+        var node: any = document.getElementById("html");
+        var content: string ="";
+        content += "Moin ";
+        content += person;
+        content += "! Alles klar?";
+        console.log(content);
+        node.innerHTML = content
     }
+    document.addEventListener("DOMContentLoaded", Funktion);
 }
