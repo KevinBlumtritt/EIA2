@@ -1,7 +1,7 @@
 namespace Aufgabe00 {
     function Funktion(): void {
         var person: string = prompt("Bitte gib deinen Namen ein");
-        var node: any = document.getElementById("html");
+        var node: HTMLElement = document.getElementById("html");
         var content: string ="";
         content += "Moin ";
         content += person;
