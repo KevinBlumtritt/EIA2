@@ -1,4 +1,4 @@
-namespace Aufgabe02 {
+/* namespace Aufgabe02 {
 
     function uno() {
 
@@ -159,9 +159,9 @@ namespace Aufgabe02 {
 
         for (let d: number = 0; d < z; d++) {
             let l = random(15);
-            if (l == 13 && s1 > 0) {
-                c = "black";
-                s1--;
+            if (l == 13 && s1 > 0) {// Zahl entspricht 13 und schwarze Karten noch vorhanden
+                c = "black"; //Farbe (c) auf schwarz gesetzt
+                s1--; // eine schwarze Karte wird rausgenommen
                 placeDiv(c, "WildDraw", d);
                 continue;
             }
@@ -264,4 +264,4 @@ namespace Aufgabe02 {
     document.addEventListener("DOMContentLoaded", (uno))
 
 
-}
+} */
