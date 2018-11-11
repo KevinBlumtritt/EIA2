@@ -1,4 +1,5 @@
 namespace Uno {
+    document.addEventListener("DOMContentLoaded", input);
     interface Unocard {
         color: string;
         value: string;
@@ -8,7 +9,7 @@ namespace Uno {
     let values: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "+2", "X", "<=>"];
     let cards: Unocard[] = [{ color: "red", value: "0" }, { color: "blue", value: "0" }, { color: "green", value: "0" }, { color: "yellow", value: "0" },
         { color: "black", value: "+4" }, { color: "black", value: "+4" }, { color: "black", value: "+4" }, { color: "black", value: "+4" },
-        { color: "black", value: "Wild" }, { color: "black", value: "Wild" }, { color: "black", value: "Wild" }, { color: "black", value: "Wild" }]; //Array für alle Karten
+        { color: "black", value: "Wild" }, { color: "black", value: "Wild" }, { color: "black", value: "Wild" }, { color: "black", value: "Wild" }]; 
 
     for (let i: number = 0; i < colors.length; i++) {
         for (let j: number = 0; j < values.length; j++) {
@@ -22,24 +23,25 @@ namespace Uno {
 
     let handcards: Unocard[] = [];
 
-    function Eingabe(): void {
+    function input(): void {
         let numberofcards: string = prompt("How many cards do You need?");
-        let n: number = parseInt(numberofcards); //strings zu Ganzzahlen
+        let n: number = parseInt(numberofcards); 
 
-        for (let anz: number = n; anz > 0; anz--) { //jeder Durchlauf um 1 abgezogen
-            let r: number = Math.floor(Math.random() * (cards.length - 1)); //Karte aus cards gelöscht
-            handcards.push(cards[r]); //ins Handcards Array gepusht
-            cards.splice(r, 1); // an Position r wird nächste Karte abgezogen
+        for (let anz: number = n; anz > 0; anz--) { 
+            let r: number = Math.floor(Math.random() * cards.length); 
+            handcards.push(cards[r]); 
+            cards.splice(r, 1); 
         }
 
-        for (let b: number = 0; b < handcards.length; b++) { //Rechne solange hoch, bis die Länge der handcards erreicht ist
-            let div: HTMLElement = document.createElement("div"); //erstelle im HTML ein Div
-            document.getElementById("HandCards").appendChild(div); //erstellt ein Kind für id
-            div.innerHTML = handcards[b].value; //Werte werden in Divs übertragen
-            div.classList.add("HandCards"); //Klasse erstellen für Farben
-            div.classList.add(handcards[b].color); //Zuordnung der Farben zu den Handcards
+        for (let b: number = 0; b < handcards.length; b++) { 
+
+            let div: HTMLElement = document.createElement("div"); 
+            document.getElementById("HandCards").appendChild(div); 
+            div.innerHTML = handcards[b].value; 
+            div.classList.add("HandCards"); 
+            div.classList.add(handcards[b].color); 
         }
 
     }
-    document.addEventListener("DOMContentLoaded", Eingabe);
+
 }

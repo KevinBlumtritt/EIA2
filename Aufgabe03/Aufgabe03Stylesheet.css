@@ -1,0 +1,122 @@
+@charset "utf-8";
+
+* {
+	font-family: Arial, sans-serif;
+	font-size: 20px;
+}
+
+#DrawPile {
+	background-color: orange;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	position: absolute;
+	left: 5px;
+	top: 5px;
+	text-align: center;
+}
+
+#DiscardPile {
+	background-color: lightblue;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	text-align: center;
+}
+
+#HandCards {
+	width: 90%;
+	height: 190px;
+	border: solid thin black;
+	position: absolute;
+	bottom: 5px;
+	display: inline-block;
+}
+
+.HandCards {
+	display: inline-block;
+	bottom: 2px;
+	margin: 4px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 160px;
+	border-radius: 10px;
+}
+
+.red {
+	background: red;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	border-radius: 10px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 160px;
+	font-size: 1.7em;
+}
+
+.blue {
+	background: blue;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	color: white;
+	border-radius: 10px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 160px;
+	font-size: 1.7em;
+}
+
+.green {
+	background: green;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	border-radius: 10px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 160px;
+	font-size: 1.7em;
+}
+
+.yellow {
+	background: yellow;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	border-radius: 10px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 160px;
+	font-size: 1.7em;
+}
+
+.black {
+	background: black;
+	width: 120px;
+	height: 180px;
+	border: solid thin black;
+	color: white;
+	border-radius: 10px; text-align : center;
+	vertical-align: middle;
+	line-height: 160px;
+	text-align: center;
+	font-size: 1.7em;
+}
+
+#ColorSorting {
+	background-color: black;
+	color: white;
+	width: 75px;
+	height: 48px;
+	border-style: solid;
+	border-color: blue green yellow red;
+	position: absolute;
+	bottom: 75px;
+	right: 20px;
+	text-align: center;
+}
