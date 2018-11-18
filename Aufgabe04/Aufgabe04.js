@@ -67,7 +67,7 @@ var Aufgabe04;
         }
         childNodeHTML += "</select>";
         childNodeHTML += "<hr>";
-        //candles
+        //Candles
         childNodeHTML += "<h3>Lighting</h3>";
         childNodeHTML += "<select name='Select' id='Lighting'>";
         for (let i = 0; i < Aufgabe04.candleTyp.length; i++) {
@@ -97,7 +97,7 @@ var Aufgabe04;
     }
     function handleChange(_event) {
         let target = _event.target;
-        //trees
+        //Trees
         if (target.id == "trees") {
             let node = document.getElementById("tree");
             let value = target.value;

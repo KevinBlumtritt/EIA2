@@ -82,7 +82,7 @@ namespace Aufgabe04 {
         childNodeHTML += "</select>";
         childNodeHTML += "<hr>";
 
-        //candles
+        //Candles
         childNodeHTML += "<h3>Lighting</h3>";
         childNodeHTML += "<select name='Select' id='Lighting'>";
         for (let i: number = 0; i < candleTyp.length; i++) {
@@ -122,7 +122,7 @@ namespace Aufgabe04 {
   
 
         let target: HTMLInputElement = <HTMLInputElement>_event.target
-        //trees
+        //Trees
         if (target.id == "trees") {
             let node: HTMLElement = document.getElementById("tree");
             let value: string = target.value;
