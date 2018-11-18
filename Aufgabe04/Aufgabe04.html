@@ -1,0 +1,126 @@
+<!--<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Weihnachtsbaumkonfigurator</title>
+
+<script src="Aufgabe04.js"></script>
+<link rel="stylesheet" type="text/css" href="Aufgabe04Stylesheet.css">
+
+
+</head>
+<body>
+
+	<fieldset id="select">
+		<legend> Type of tree </legend>
+		<select name="Select" id="treeselect">
+			<option value="Nordmann fir">Nordmann fir</option>
+			<option value="Douglas spruce">Douglas spruce</option>
+			<option value="Blue spruce">Blue spruce</option>
+		</select>
+	</fieldset>
+
+
+	<fieldset id="select">
+		<legend> Tree holder </legend>
+		<select name="Select" id="holderselect">
+			<option value="">Plastic tree stand</option>
+			<option value="">Metal tree stand</option>
+			<option value="">No tree stand</option>
+		</select>
+	</fieldset>
+	
+
+	<fieldset id="select">
+		<legend> Tree decoration </legend>
+		<div>Christmas balls</div>
+		<select name="Select" id="ballsselect">
+			<option value="Nordmann fir">Red Christmas balls</option>
+			<option value="Douglas spruce">Golden Christmas balls</option>
+			<option value="Blue spruce">Blue Christmas balls</option>
+			<option value="Blue spruce">Green Christmas balls</option>
+		</select>
+
+		<div>Lametta</div>
+		<select name="Select" id="lamettaselect">
+			<option value="Golden lametta">Golden lametta</option>
+			<option value="Silver lametta">Silver lametta</option>
+			<option value="Green lametta">Green lametta</option>
+			<option value="Blue lametta">Blue lametta</option>
+			<option value="Blue lametta">Red lametta</option>
+		</select>
+
+		<div>Candles</div>
+		<select name="Select" id="candlesselect">
+			<option value="Red candles">Red candles</option>
+			<option value="White candles">White candles</option>
+		</select>
+	</fieldset>
+
+
+	<fieldset id="select">
+		<legend> Delivery options</legend>
+		<input type="radio" name="Radiogroup" value="radio1" id="holderradio1" />
+		<label for="radio1">Standard delivery</label> <input type="radio" name="Radiogroup"
+			value="radio2" id="holderradio2" /> <label for="radio2">Premium delivery</label>
+
+		<div><select name="Select" id="deliveryselect">
+			<option value="DHL">DHL</option>
+			<option value="Hermes">Hermes</option>
+			<option value="DPS">DPD</option>
+			<option value="UPS">UPS</option>
+		</select></div>
+	</fieldset>
+	
+	
+	<fieldset id="text">
+		<legend> Information </legend>
+		<div>Name <input type="text" name="Text" placeholder="type here" required/></div>
+		<div>Surname <input type="text" name="Text" placeholder="type here" required/></div>
+		<div>Adress <input type="text" name="Text" placeholder="type here" required/></div>
+		<div>Mail <input type="text" name="Text" placeholder="type here" required/></div>
+	</fieldset>
+	
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="Aufgabe04.js" type="text/javascript" charset="utf-8"></script>
+<script src="Aufgabe04nr2.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="Aufgabe04Stylesheet.css">
+<title>Christmas Tree Configurator</title>
+</head>
+<body>
+<h1>Christmas Tree Configurator </h1>
+	<fieldset id="fieldset">
+		<legend>Ware</legend>
+	</fieldset>
+	<div id="div">
+		<h2>Overview</h2>
+		<a class="text">Tree:</a><a id="tree" class="text"></a> 
+		<br> <a class="text">Holder</a>
+		<a id="holder" class="text"></a> 
+		<br> 
+		<a class="text">Christmas Balls:</a>
+		<a id="ball" class="text"></a><a id="ballAmount" class="text"></a>
+		<br>
+		<a class="text">Lametta:</a> 
+		<a id="lametta" class="text"></a><a id="lamettaAmount" class="text"></a>
+		<br>
+		<a class="text">Lighting:</a><a id="lighting" class="text"></a><a id="lightingAmount" class="text"></a>
+		<br>
+		<a class="text">Delivery options:</a><a id="delivery" class="text"></a>
+		<br>
+		<a class="text">Adress:</a><a id="adress" class="text"></a>
+		<br>
+		<a class="text">Price:</a><a id="price" class="text"></a>
+	</div>
+	<button id="button">Check Order</button>
+	<div id="missing"></div>
+</body>
+</html>
+
