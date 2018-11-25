@@ -96,9 +96,6 @@ namespace Aufgabe05 {
         let fieldset: HTMLElement = document.getElementById("fieldset2");
 
         fieldset.addEventListener("change", handleChange);
-        //let h3: HTMLElement = document.createElement("h3");
-        //h3.innerText = "Adresse";
-        //document.getElementById("fieldset2").appendChild(h3);
         let input: HTMLElement = document.createElement("input");
         input.setAttribute("id", "ad");
         document.getElementById("fieldset2").appendChild(input);
