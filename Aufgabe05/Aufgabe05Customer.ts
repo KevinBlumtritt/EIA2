@@ -76,17 +76,17 @@ namespace Aufgabe05 {
         option.setAttribute("value", _products.name + " " + _products.price + " Euro");
         option.innerText = _products.name + " " + _products.price + " Euro";
         document.getElementById(key).appendChild(option);
-        let steper: HTMLElement = document.createElement("input");
-        steper.setAttribute("type", "number");
-        steper.setAttribute("name", " Stepper");
-        steper.setAttribute("step", "1");
-        steper.setAttribute("min", "0");
-        steper.setAttribute("max", "50");
-        steper.setAttribute("value", "0");
-        steper.setAttribute("item", _products.typ);
-        steper.setAttribute("title", _products.name);
-        steper.setAttribute("price", _products.price.toFixed());
-        document.getElementById(key).appendChild(steper);
+        let stepper: HTMLElement = document.createElement("input");
+        stepper.setAttribute("type", "number");
+        stepper.setAttribute("name", " Stepper");
+        stepper.setAttribute("step", "1");
+        stepper.setAttribute("min", "0");
+        stepper.setAttribute("max", "50");
+        stepper.setAttribute("value", "0");
+        stepper.setAttribute("item", _products.typ);
+        stepper.setAttribute("title", _products.name);
+        stepper.setAttribute("price", _products.price.toFixed());
+        document.getElementById(key).appendChild(stepper);
 
     }
 
