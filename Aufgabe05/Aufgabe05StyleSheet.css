@@ -1,0 +1,78 @@
+
+br{
+	margin:0.5px;
+}
+
+div {
+	position: absolute;
+	top: 68px;
+	left: 380px;
+	width: 300px;
+	border: 5px solid green;
+	padding-bottom: 10px;
+	padding-left: 15px;
+	background-Color: #ffffff;
+}
+
+button {
+	position: absolute;
+	top: 200px;
+	left: 385px;
+}
+
+.text{
+	font-size:1.2em;
+}
+
+#box{
+	border: thin solid red;
+	width: 90px;
+	background-Color: #ffffff;
+}
+
+#missing{
+	position: absolute;
+	top: 250px;
+	left: 760px;
+	width: 300px;
+	background-Color: transparent;
+	border: none;
+	padding-left: 0px;
+	color:red;
+	font-weight:bold;
+}
+
+label::after {
+	content:"";
+	display: block;
+}
+
+body {
+	background-Color: whitesmoke;
+	font-family: Georgia;
+	
+}
+
+h1 {
+	margin:0.3em 0.3em 0.3em 0em;
+	color: black;
+	
+}
+
+h3 {
+	margin:0.3em;
+}
+
+fieldset {
+	width: 300px;
+	border: 5px solid green;
+	background-Color: #ffffff;
+	margin-bottom:0.5em ;
+}
+
+legend{
+	font-size:1.2em;
+	font-weight:bold;
+	background-Color: white;
+	border: 5px solid red;
+}
