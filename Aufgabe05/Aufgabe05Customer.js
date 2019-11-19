@@ -1,3 +1,4 @@
+"use strict";
 var Aufgabe05;
 (function (Aufgabe05) {
     document.addEventListener("DOMContentLoaded", init);
@@ -125,6 +126,8 @@ var Aufgabe05;
                 else if (article.checked == false) {
                     article.setAttribute("value", "0");
                 }
+                //let articleAmount: number = parseInt(article.getAttribute("value"));
+                //console.log(articleAmount);
             }
             let domAmount = target.value;
             target.setAttribute("value", domAmount);

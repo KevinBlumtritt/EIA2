@@ -1,10 +1,11 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http"); //Modul wird als HTTP Objekt importiert
 var L06_SendData;
 (function (L06_SendData) {
     console.log("Starting server"); //Consolelog wird mit der Nachricht "Starting server" ausgegeben
     let port = process.env.PORT; //Stellt den PORT als number ein (Heroku) 
-    if (port == undefined)
+    if (port == undefined) //Falls Port nicht definiert ist,
         port = 8100; //Port soll die nummer 8100 haben (verbindet Heroku mit EIA2)
     let server = Http.createServer(); //variable Server wird als typ Http.Server und als Http.createserver Funktion gleichgesetzt
     server.addListener("request", handleRequest); //F�gt einen Listener hinzu der dem H�ndler bescheid gibt wenn handleRequest getriggert wurde

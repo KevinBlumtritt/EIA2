@@ -1,3 +1,4 @@
+"use strict";
 var Aufgabe04;
 (function (Aufgabe04) {
     document.addEventListener("DOMContentLoaded", fillFieldset);

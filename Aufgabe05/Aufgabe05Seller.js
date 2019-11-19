@@ -1,3 +1,4 @@
+"use strict";
 var Aufgabe05;
 (function (Aufgabe05) {
     Aufgabe05.assoProducts = {

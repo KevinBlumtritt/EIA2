@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>CocktailBar</title>
+    <link rel="stylesheet" href="L03.css" type="text/css" media="screen" />
+    <script src="L03.js" type="text/javascript" charset="utf-8"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Character Creator</h1>
+        <p>Create Your Character!</p>
+    </header>
+
+    <form>
+        <div id="form">
+            <fieldset>
+                <legend>Name</legend>
+                <input type="text" name="FirstName" placeholder="Choose Your Name!">
+            </fieldset>
+            <fieldset>
+                <legend>Gender</legend>
+                <input type="radio" name="Gender" id="m" value="m" />
+                <label for="m">M</label>
+                <input type="radio" name="Gender" id="w" value="w" />
+                <label for="m">W</label>
+                <input type="radio" name="Gender" id="d" value="d" />
+                <label for="m">D</label>
+            </fieldset>
+            <fieldset>
+                <legend>Race</legend>
+                <select name="Race" id="race">
+                    <option value="Human">Human</option>
+                    <option value="Dwarf">Dwarf</option>
+                    <option value="Orc">Orc</option>
+                    <option value="Elf">Elf</option>
+                    <option value="Dark-Elf">Dark-Elf</option>
+                </select>
+            </fieldset>
+            <fieldset>
+                <legend>Weapons</legend>
+                <input type="radio" name="Weapons" id="sword" value="Sword" weight="5.00" checked />
+                <label for="sword">Sword</label>
+                <input type="radio" name="Weapons" id="dagger" value="Dagger" weight="1.00" />
+                <label for="dagger">Dagger</label>
+                <input type="radio" name="Weapons" id="axe" value="Axe" weight="10.00" />
+                <label for="axe">Axe</label>
+                <input type="radio" name="Weapons" id="bow" value="Bow" weight="4.00" />
+                <label for="bow">Bow</label>
+            </fieldset>
+            <fieldset>
+                <legend>Accessoires</legend>
+                <input type="checkbox" name="Accessoires" id="headwear" value="Headwear" weight="1">
+                <label for="headwear">Headwear</label>
+                <input type="checkbox" name="Accessoires" id="earrings" value="Earrings" weight="0.10">
+                <label for="earrings">Earrings</label>
+                <input type="checkbox" name="Accessoires" id="necklace" value="Necklace" weight="0.10">
+                <label for="necklace">Necklace</label>
+                <input type="checkbox" name="Accessoires" id="rings" value="Rings" weight="0.10">
+                <label for="rings">Rings</label>
+            </fieldset>
+            <fieldset>
+                <legend>Height</legend>
+                <span id="slider">
+                    <span>
+                        110cm
+                        <input type="range" name="Height" id="amount" min="110" max="250" step="1" value="1">
+                        250cm
+                    </span>
+                </span>
+            </fieldset>
+            <fieldset>
+                <legend>Weight</legend>
+                <span id="slider">
+                    <span>
+                        40kg
+                        <input type="range" name="Weight" id="amount" min="40" max="300" step="10" value="10">
+                        300kg
+                    </span>
+                </span>
+            </fieldset>
+            <fieldset>
+                <legend>Eye Color</legend>
+                <input type="color" id="eyecolor" name="eyecolor" value="#e66465">
+            </fieldset>
+            <fieldset>
+                <legend>Date of Birth</legend>
+                <input type="date" id="dateofbirth" name="dateofbirth" value="1990-01-01" min="1900-01-01"
+                    max="2019-01-01">
+            </fieldset>
+
+        </div>
+    </form>
+
+    <div>
+        <h2>Your Character</h2>
+        <div id="character">
+            ...
+        </div>
+    </div>
+
+</body>
+
+</html>

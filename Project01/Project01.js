@@ -1,3 +1,4 @@
+"use strict";
 var Aufgabe00;
 (function (Aufgabe00) {
     function Funktion() {

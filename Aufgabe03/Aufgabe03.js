@@ -1,3 +1,4 @@
+"use strict";
 var UnoGame03;
 (function (UnoGame03) {
     document.addEventListener("DOMContentLoaded", input);
@@ -29,7 +30,7 @@ var UnoGame03;
         pull.addEventListener("click", pullFromDrawPile);
     }
     function randomCard(_anz) {
-        for (let anz = _anz; anz > 0; anz--) {
+        for (let anz = _anz; anz > 0; anz--) { //jeder Durchlauf um 1 abgezogen
             let r = Math.floor(Math.random() * cards.length); //Karte aus cards gel�scht
             handcards.push(cards[r]); //ins Handcards Array gepusht
             cards.splice(r, 1); // an Position r wird n�chste Karte abgezogen
@@ -40,7 +41,8 @@ var UnoGame03;
         displayHand();
     }
     function pressKeyboard(_event) {
-        if (_event.keyCode == 32) {
+        if (_event.keyCode == 32) //keyCode 32 = Leertaste 
+         {
             pullFromDrawPile();
         }
     }

@@ -1,3 +1,4 @@
+"use strict";
 var Cows;
 (function (Cows) {
     let nums = [2, 6, 5];

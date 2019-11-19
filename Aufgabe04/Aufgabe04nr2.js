@@ -1,3 +1,4 @@
+"use strict";
 var Aufgabe04;
 (function (Aufgabe04) {
     Aufgabe04.treeSpecies = [{ name: "none", price: 0 }, { name: "Nordmann fir", price: 55 }, { name: "Douglas fir", price: 45 }, { name: "White spruce", price: 30 }];

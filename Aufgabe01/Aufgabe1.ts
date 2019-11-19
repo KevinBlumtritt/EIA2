@@ -1,6 +1,6 @@
 namespace Boxes {
     let n: number = 5;
-    let c: string;
+    let color: string;
     let x: number = 0;
     let y: number = 0;
 
@@ -9,36 +9,32 @@ namespace Boxes {
         x = (x + 170) % 400;
         switch (i) {
             case 0:
-                c = "#ff0000";
+                color = "#ff0000";
                 break;
             case 1:
             case 4:
-                c = "#00ff00";
+                color = "#00ff00";
                 break;
             case 3:
                 continue;
             default:
-                c = "#0000ff";
+                color = "#0000ff";
         }
-        for (let a: number = 50; a > 0; a -= 20) {
-            placeDiv(c, x, y, a, a);
+        
+        for (let size of ["big", "medium", "small"]) {
+            createBox(color, x, y, size);
             if (i == 4)
                 break;
         }
     }
 
 
-    function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number): void {
+    function createBox(_color: string, _x: number, _y: number, _size: string): void {
         let div: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div);
-        
-        let s: CSSStyleDeclaration = div.style;
-        s.border = "thin solid black";
-        s.position = "absolute";
-        s.backgroundColor = _color;
-        s.width = _width + "px";
-        s.height = _height + "px";
-        s.left = _x + "px";
-        s.top = _y + "px";
+        div.classList.add(_size);
+        div.style.backgroundColor = _color;
+        div.style.left = _x + "px";
+        div.style.top = _y + "px";
     }
 }
