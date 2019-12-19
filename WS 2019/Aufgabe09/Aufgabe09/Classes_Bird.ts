@@ -35,8 +35,8 @@ namespace L09_Classes {
 
             if (this.position.y < 0)
                 this.position.y += crc2.canvas.height; 
-            if (this.position.x < -50)
-                this.position.x += crc2.canvas.width;         
+            if (this.position.x < - 50)
+                this.position.x += crc2.canvas.width + 50;         
         }
 
         draw(): void {

@@ -24,7 +24,7 @@ var L09_Classes;
             if (this.position.y < 0)
                 this.position.y += L09_Classes.crc2.canvas.height;
             if (this.position.x < -50)
-                this.position.x += L09_Classes.crc2.canvas.width;
+                this.position.x += L09_Classes.crc2.canvas.width + 50;
         }
         draw() {
             //body
