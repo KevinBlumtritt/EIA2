@@ -7,6 +7,7 @@ namespace L09_Classes {
     window.addEventListener("load", handleLoad);
     let crc2: CanvasRenderingContext2D;
     let goldencut: number = 0.38;
+    export let image: ImageData;
 
 
     function handleLoad(_event: Event): void {
@@ -40,7 +41,10 @@ namespace L09_Classes {
         //drawSnowflake();
         drawFlyingBirdies({ x: 20, y: 20}, { x: canvas.width -90, y: canvas.height -480})
         crc2.save();
+        image = crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
+
+    
 
     function drawBackground(): void {
         console.log("Background");

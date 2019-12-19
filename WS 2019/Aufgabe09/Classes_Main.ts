@@ -24,11 +24,8 @@ namespace L09_Classes {
         function update(): void {
             console.log("Update");
 
-            crc2.save();
-            
-            crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-            
-            crc2.restore();
+            crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+            crc2.putImageData(image, 0, 0);
 
             for (let i:number=0; i < snowflakeArray.length; i++){
                 snowflakeArray[i].draw();

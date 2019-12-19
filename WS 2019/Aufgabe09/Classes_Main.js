@@ -17,9 +17,8 @@ var L09_Classes;
         window.setInterval(update, 20);
         function update() {
             console.log("Update");
-            L09_Classes.crc2.save();
-            L09_Classes.crc2.fillRect(0, 0, L09_Classes.crc2.canvas.width, L09_Classes.crc2.canvas.height);
-            L09_Classes.crc2.restore();
+            L09_Classes.crc2.clearRect(0, 0, L09_Classes.crc2.canvas.width, L09_Classes.crc2.canvas.height);
+            L09_Classes.crc2.putImageData(L09_Classes.image, 0, 0);
             for (let i = 0; i < snowflakeArray.length; i++) {
                 snowflakeArray[i].draw();
                 snowflakeArray[i].move(100);

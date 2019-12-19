@@ -33,6 +33,7 @@ var L09_Classes;
         //drawSnowflake();
         drawFlyingBirdies({ x: 20, y: 20 }, { x: canvas.width - 90, y: canvas.height - 480 });
         crc2.save();
+        L09_Classes.image = crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
     function drawBackground() {
         console.log("Background");
