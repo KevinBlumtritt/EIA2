@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node C:/Users/kevin/Studium/EIA2/WS2019/Aufgabe11/Server.js"
+    "start": "node C:/Users/kevin/Studium/EIA2/WS2019/Aufgabe11/Server2.js"
   },
   "repository": {
     "type": "git",
