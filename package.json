@@ -9,7 +9,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node WS2019/Aufgabe11/Server2.js"
+    "start": "node WS2019/Aufgabe11/Server2.js remote"
   },
   "repository": {
     "type": "git",
