@@ -1,0 +1,24 @@
+{
+  "name": "eia2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/mongodb": "^3.3.15",
+    "mongodb": "^3.5.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node C:/Users/kevin/Studium/EIA2/WS2019/Aufgabe11/Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinBlumtritt/EIA2.git"
+  },
+  "author": "KevinBlumtritt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinBlumtritt/EIA2/issues"
+  },
+  "homepage": "https://github.com/KevinBlumtritt/EIA2#readme"
+}
