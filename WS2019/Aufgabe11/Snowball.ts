@@ -1,7 +1,7 @@
 namespace L11{
     export class Snowball{
         position: Vector;
-        velocity: Vector;
+        //velocity: Vector;
         size: number;
 
         constructor(_size: number, _position: Vector) {
@@ -12,7 +12,7 @@ namespace L11{
  
         }
 
-             draw(): void { 
+             draw(): void {
 
                 crc2.beginPath();
                 crc2.save();

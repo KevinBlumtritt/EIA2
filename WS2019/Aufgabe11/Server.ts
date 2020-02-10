@@ -1,6 +1,7 @@
 import * as Http from "http";
 import * as Url from "url";
 
+
 export namespace L11 {
     let server: Http.Server = Http.createServer();
 
@@ -14,7 +15,7 @@ export namespace L11 {
     server.addListener("request", handleRequest);
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
-        console.log("Grüezi");
+        console.log("Guten Tag");
 
         console.log(_request.url);
 

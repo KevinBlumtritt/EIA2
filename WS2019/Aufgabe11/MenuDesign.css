@@ -113,3 +113,11 @@ html{
     background-size: 100%;
 }
 
+.yourScore{
+	text-align: center;
+    font-family:Arial;
+	font-size:1.4em;
+    font-weight:bold;
+	color:#ffffff; 
+	margin-bottom: 0.5em;
+}

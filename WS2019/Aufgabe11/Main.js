@@ -1,7 +1,7 @@
 "use strict";
 var L11;
 (function (L11) {
-    window.addEventListener("load", handleLoad);
+    window.addEventListener("load", init);
     window.addEventListener('contextmenu', function (e) { e.preventDefault(); }); //verhindert context menu Aufruf bei Recktsklick
     //let position: Vector;
     let snowflakeArray = [];
@@ -9,10 +9,21 @@ var L11;
     let throwBirdfood;
     let bird;
     let fps = 20;
+    let node;
+    let wroteScore = false;
     //export let velocity: Vector;
-    let score = 1030; //score at game start
+    L11.score = 1030; //score at game start
+    let startbutton;
+    function init(_event) {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("endscreen").style.display = "none";
+        startbutton = document.getElementById("startbutton");
+        startbutton.addEventListener("click", handleLoad);
+    }
     function handleLoad(_event) {
         console.log("starting");
+        document.getElementById("startscreen").style.display = "none";
+        document.getElementById("game").style.display = "initial";
         let canvas = document.querySelector("canvas");
         if (!canvas)
             return;
@@ -40,8 +51,8 @@ var L11;
             pickingbirdArray.push(pickingbird);
         } */
         function generateScore() {
-            console.log(score);
-            score--;
+            console.log(L11.score);
+            L11.score--;
         }
     }
     window.setInterval(update, fps); //update Funktion wird alle 20ms aufgerufen (neuer frame wird generiert)
@@ -75,7 +86,7 @@ var L11;
         }
     }
     function handleRightClick(_client) {
-        score--;
+        L11.score--;
         let birdfoodVector = new L11.Vector(_client.offsetX, _client.offsetY);
         throwBirdfood = new L11.Birdfood(4, birdfoodVector);
         for (let bird of birdArray) {
@@ -97,7 +108,7 @@ var L11;
         return (nearsize >= getDifference.length);
     }
     function handleLeftClick(_client) {
-        score--;
+        L11.score--;
         let snowballVector = new L11.Vector(_client.offsetX, _client.offsetY);
         L11.throwSnowball = new L11.Snowball(6, snowballVector);
         window.setTimeout(getBirdHitbox, 320, snowballVector);
@@ -116,7 +127,23 @@ var L11;
         birdArray.splice(index, 1); //index sucht an welcher Stelle Bird im Array ist --> löscht an dieser Stelle eine Instanz heraus
         if (birdArray.length <= 0) {
             console.log("ALL BIRDS ARE HIT");
-            location.replace("EndScreen.html"); //Verlinkung zum Endscreen
+            //location.replace("EndScreen.html"); //Verlinkung zum Endscreen
+            showGameOverScreen();
+        }
+    }
+    function showGameOverScreen() {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("endscreen").style.display = "initial";
+        node = document.getElementsByClassName("yourScore")[0];
+        scoreToHTML();
+    }
+    L11.showGameOverScreen = showGameOverScreen;
+    function scoreToHTML() {
+        if (!wroteScore) {
+            let content = "";
+            content = "Your score: " + L11.score;
+            node.innerHTML += content;
+            wroteScore = true;
         }
     }
     /*async function sendScore(_event: Event): Promise<void> {

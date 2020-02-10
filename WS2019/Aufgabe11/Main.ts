@@ -1,6 +1,6 @@
 namespace L11 {
 
-    window.addEventListener("load", handleLoad);
+    window.addEventListener("load", init);
     window.addEventListener('contextmenu', function (e) { e.preventDefault(); }); //verhindert context menu Aufruf bei Recktsklick
 
     export let crc2: CanvasRenderingContext2D;
@@ -12,11 +12,28 @@ namespace L11 {
     let throwBirdfood: Birdfood;
     let bird: Bird;
     let fps: number = 20;
+    let node: HTMLDivElement;
+    let wroteScore: boolean = false;
     //export let velocity: Vector;
-    let score: number = 1030; //score at game start
+    export let score: number = 1030; //score at game start
+    let startbutton : HTMLButtonElement;
+
+
+    function init(_event: Event): void {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("endscreen").style.display = "none";
+
+        startbutton = <HTMLButtonElement>document.getElementById("startbutton");
+        startbutton.addEventListener("click", handleLoad);
+
+    }
 
     function handleLoad(_event: Event): void {
         console.log("starting");
+
+        document.getElementById("startscreen").style.display = "none"; 
+        document.getElementById("game").style.display = "initial";
+
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
@@ -157,9 +174,29 @@ namespace L11 {
 
         if (birdArray.length <= 0) {
             console.log("ALL BIRDS ARE HIT");
-            location.replace("EndScreen.html"); //Verlinkung zum Endscreen
+            //location.replace("EndScreen.html"); //Verlinkung zum Endscreen
+            showGameOverScreen();
         }
     }
+
+    export function showGameOverScreen(): void {
+        document.getElementById("game").style.display = "none";
+        document.getElementById("endscreen").style.display = "initial";
+        node = <HTMLDivElement>document.getElementsByClassName("yourScore")[0];
+        scoreToHTML();
+    } 
+
+    function scoreToHTML(): void {
+        if (!wroteScore) {
+            let content: string = "";
+            content = "Your score: " + score;
+            node.innerHTML += content;
+            wroteScore = true;
+        }
+    }
+    
+
+
 
     /*async function sendScore(_event: Event): Promise<void> {
         console.log("SEND SCORE")
