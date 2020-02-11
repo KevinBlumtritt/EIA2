@@ -56,7 +56,8 @@ var L11;
     }
     async function retrieveScore() {
         // console.log("Asking DB about Orders ", orders.find());
-        let cursor = await score.find();
+        let cursor = await score.find().sort({ score: -1 });
+        ;
         let answer = await cursor.toArray();
         console.log("DB CursorToArray", answer);
         if (answer != null) {
