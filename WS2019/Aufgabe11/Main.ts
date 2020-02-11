@@ -17,7 +17,6 @@ namespace L11 {
     //export let velocity: Vector;
     export let score: number = 1030; //score at game start
     let startbutton: HTMLButtonElement;
-    let form: HTMLFormElement
 
     export let url: string = "https://eiamitspeck.herokuapp.com/";
 
@@ -32,10 +31,12 @@ namespace L11 {
     }
 
     function handleLoad(_event: Event): void {
+
+        score = 1030;
         console.log("starting");
 
         let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[id=sendData]");
-        submit.addEventListener("click", nameScore);
+        submit.addEventListener("click", nameAndScore);
 
         document.getElementById("startscreen").style.display = "none";
         document.getElementById("game").style.display = "initial";
@@ -53,7 +54,7 @@ namespace L11 {
         canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
         //submit.addEventListener("click", sendScore);
 
-        let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorebutton");
+        let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
         
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
@@ -192,7 +193,7 @@ namespace L11 {
 
         let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[id=sendData]");
 
-        submit.addEventListener("click", nameScore);
+        submit.addEventListener("click", nameAndScore);
         document.getElementById("game").style.display = "none";
         document.getElementById("endscreen").style.display = "initial";
         node = <HTMLDivElement>document.getElementsByClassName("yourScore")[0];
@@ -214,7 +215,7 @@ namespace L11 {
     }
 
 
-      function nameScore(): void {
+      function nameAndScore(): void {
         console.log("end");
         let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
@@ -227,7 +228,7 @@ namespace L11 {
 
         let query: string = "name=" + _insertedName + "&highScore=" + _score;
         let response: Response = await fetch(url + "?" + query);
-        alert(response);
+        console.log(response);
 
     }
     
@@ -237,10 +238,12 @@ namespace L11 {
         let query: string = "command=retrieve";
         let response: Response = await fetch(url + "?" + query);
         let responseText: string = await response.text();
+        //let finalresponse: any[] = JSON.parse(responseText);
 
         alert(responseText);
-        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
-        orders.innerText = responseText;
+        let scores: HTMLDivElement = <HTMLDivElement>document.querySelector("span#showScores");
+        scores.innerText = responseText;
+
 
     }
 

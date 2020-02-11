@@ -14,7 +14,6 @@ var L11;
     //export let velocity: Vector;
     L11.score = 1030; //score at game start
     let startbutton;
-    let form;
     L11.url = "https://eiamitspeck.herokuapp.com/";
     function init(_event) {
         document.getElementById("game").style.display = "none";
@@ -23,9 +22,10 @@ var L11;
         startbutton.addEventListener("click", handleLoad);
     }
     function handleLoad(_event) {
+        L11.score = 1030;
         console.log("starting");
         let submit = document.querySelector("button[id=sendData]");
-        submit.addEventListener("click", nameScore);
+        submit.addEventListener("click", nameAndScore);
         document.getElementById("startscreen").style.display = "none";
         document.getElementById("game").style.display = "initial";
         let canvas = document.querySelector("canvas");
@@ -38,7 +38,7 @@ var L11;
         canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
         canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
         //submit.addEventListener("click", sendScore);
-        let highscorebutton = document.getElementById("highscorebutton");
+        let highscorebutton = document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
         for (let i = 0; i < 20; i++) {
@@ -136,7 +136,7 @@ var L11;
     //let userName: string = "hallihallo";
     function showGameOverScreen() {
         let submit = document.querySelector("button[id=sendData]");
-        submit.addEventListener("click", nameScore);
+        submit.addEventListener("click", nameAndScore);
         document.getElementById("game").style.display = "none";
         document.getElementById("endscreen").style.display = "initial";
         node = document.getElementsByClassName("yourScore")[0];
@@ -155,7 +155,7 @@ var L11;
             wroteScore = true;
         }
     }
-    function nameScore() {
+    function nameAndScore() {
         console.log("end");
         let insertedname = prompt("Your Score: " + L11.score + "\n Enter your name.");
         if (insertedname != null) {
@@ -165,16 +165,17 @@ var L11;
     async function sendtohighscorelist(_insertedName, _score) {
         let query = "name=" + _insertedName + "&highScore=" + _score;
         let response = await fetch(L11.url + "?" + query);
-        alert(response);
+        console.log(response);
     }
     async function gethighscorelist() {
         console.log("Highscores ausgeben");
         let query = "command=retrieve";
         let response = await fetch(L11.url + "?" + query);
         let responseText = await response.text();
+        //let finalresponse: any[] = JSON.parse(responseText);
         alert(responseText);
-        let orders = document.querySelector("span#highscorelist");
-        orders.innerText = responseText;
+        let scores = document.querySelector("span#showScores");
+        scores.innerText = responseText;
     }
 })(L11 || (L11 = {}));
 //# sourceMappingURL=Main.js.map
