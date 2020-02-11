@@ -16,7 +16,10 @@ namespace L11 {
     let wroteScore: boolean = false;
     //export let velocity: Vector;
     export let score: number = 1030; //score at game start
-    let startbutton : HTMLButtonElement;
+    let startbutton: HTMLButtonElement;
+    let form: HTMLFormElement
+
+    export let url: string = "https://eiamitspeck.herokuapp.com/";
 
 
     function init(_event: Event): void {
@@ -31,7 +34,10 @@ namespace L11 {
     function handleLoad(_event: Event): void {
         console.log("starting");
 
-        document.getElementById("startscreen").style.display = "none"; 
+        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[id=sendData]");
+        submit.addEventListener("click", nameScore);
+
+        document.getElementById("startscreen").style.display = "none";
         document.getElementById("game").style.display = "initial";
 
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
@@ -46,7 +52,13 @@ namespace L11 {
         canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
         canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
         //submit.addEventListener("click", sendScore);
-        window.setInterval(generateScore, 1000);
+
+        let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorebutton");
+        highscorebutton.addEventListener("click", gethighscorelist);
+        
+        document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+
+
 
         for (let i: number = 0; i < 20; i++) {
             bird = new Bird(2);
@@ -60,19 +72,14 @@ namespace L11 {
             snowflakeArray.push(snowflake);
         }
 
-        /* for (let i: number = 0; i < 10; i++) {
-            let pickingbird: PickingBird = new PickingBird(1.8);
-            //  console.log("new bird");
-            pickingbirdArray.push(pickingbird);
-        } */
-
-        function generateScore(): void {
-            console.log(score);
-            score--;
-        }
-
     }
 
+    let finalscore : number = window.setInterval(generateScore, 1000);
+
+    function generateScore(): void {
+        console.log(score);
+        score--;
+    }
 
     window.setInterval(update, fps); //update Funktion wird alle 20ms aufgerufen (neuer frame wird generiert)
 
@@ -172,38 +179,70 @@ namespace L11 {
         let index: number = birdArray.indexOf(_bird);
         birdArray.splice(index, 1); //index sucht an welcher Stelle Bird im Array ist --> löscht an dieser Stelle eine Instanz heraus
 
-        if (birdArray.length <= 0) {
+        if (birdArray.length <= 19) {
             console.log("ALL BIRDS ARE HIT");
             //location.replace("EndScreen.html"); //Verlinkung zum Endscreen
             showGameOverScreen();
         }
     }
 
+    //let userName: string = "hallihallo";
+
     export function showGameOverScreen(): void {
+
+        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[id=sendData]");
+
+        submit.addEventListener("click", nameScore);
         document.getElementById("game").style.display = "none";
         document.getElementById("endscreen").style.display = "initial";
         node = <HTMLDivElement>document.getElementsByClassName("yourScore")[0];
+        //score
+        clearInterval(finalscore);
         scoreToHTML();
-    } 
+        //sendData(userName, score);
+        console.log(score);
+    }
+
 
     function scoreToHTML(): void {
         if (!wroteScore) {
             let content: string = "";
-            content = "Your score: " + score;
+            content = "YOUR SCORE: " + score;
             node.innerHTML += content;
             wroteScore = true;
         }
     }
+
+
+      function nameScore(): void {
+        console.log("end");
+        let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
+        if (insertedname != null) {
+            sendtohighscorelist(insertedname, score);
+        }
+    }
     
 
+    async function sendtohighscorelist(_insertedName: string, _score: number): Promise<void> {
 
+        let query: string = "name=" + _insertedName + "&highScore=" + _score;
+        let response: Response = await fetch(url + "?" + query);
+        alert(response);
 
-    /*async function sendScore(_event: Event): Promise<void> {
-        console.log("SEND SCORE")
-        let query: URLSearchParams = new URLSearchParams;
-        await fetch("index.html?" + query.toString());
-        alert("SENT!")
-    }*/
+    }
+    
+    async function gethighscorelist(): Promise<void> {
+
+        console.log("Highscores ausgeben");
+        let query: string = "command=retrieve";
+        let response: Response = await fetch(url + "?" + query);
+        let responseText: string = await response.text();
+
+        alert(responseText);
+        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
+        orders.innerText = responseText;
+
+    }
 
 
 

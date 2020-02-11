@@ -51,7 +51,7 @@
     margin-bottom: 1.5%;
 }
 
-button {
+#sendData {
 	box-shadow:inset 0px 1px 0px 0px #fafafa;
 	background:linear-gradient(to bottom, #e2e6eb 5%, #cccccc 100%);
 	background-color:#e2e6eb;
@@ -61,7 +61,7 @@ button {
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:1.4em;
+	font-size:1.2em;
 	font-weight:bold;
 	padding:10px 24px;
 	text-decoration:none;
@@ -116,7 +116,7 @@ html{
 .yourScore{
 	text-align: center;
     font-family:Arial;
-	font-size:1.4em;
+	font-size:1.7em;
     font-weight:bold;
 	color:#ffffff; 
 	margin-bottom: 0.5em;

@@ -38,7 +38,7 @@ export namespace L11 {
     }
 
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-        console.log("What's up?");
+        console.log("Whuzzup?");
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -50,8 +50,8 @@ export namespace L11 {
             // }
 
             if (url.query["command"] == "retrieve") {
-                let report: any[] | string = await retrieveOrders();
-                if (report == "We encountered tecnical problems. Please try again later")
+                let report: any[] | string = await retrieveScore();
+                if (report == "We encountered technical problems. Please try again later")
                     _response.write(report);
                 else
                     _response.write(JSON.stringify(report));
@@ -67,7 +67,7 @@ export namespace L11 {
         _response.end();
     }
 
-    async function retrieveOrders(): Promise<any[] | string> {
+    async function retrieveScore(): Promise<any[] | string> {
         // console.log("Asking DB about Orders ", orders.find());
         let cursor: Mongo.Cursor = await score.find();
         let answer: Promise<any[]> = await cursor.toArray();
@@ -76,7 +76,7 @@ export namespace L11 {
             return answer;
         }
         else
-            return "We encountered tecnical problems. Please try again later";
+            return "We encountered technical problems. Please try again later";
     }
 
 }

@@ -14,7 +14,6 @@
     <script src="Snowflake.js"></script>
     <script src="Bird.js"></script>
     <script src="Canvas.js"></script>
-    <script src="Canvas.js"></script>
 
     <link rel="stylesheet" type="text/css" href="MenuDesign.css">
     <!-- <link rel="stylesheet" type="text/css" href="CanvasStyleSheet.css"> -->
@@ -27,29 +26,32 @@
         </h1>
         <button id="startbutton" type="button">START GAME</button>
         <button id="highscorebutton" type="button">HIGHSCORES</button>
+        <span id="highscorelist"></span>
     </div>
+
 
     <div id="game">
         <canvas width=1200 height=700></canvas>
     </div>
 
+
     <div id="endscreen">
         <h1 id="explanation">
             WELL DONE!
         </h1>
-        <form id="nameForm" method="SET">
-            <h2>
-                ENTER YOUR NAME
-                <p><input type="text" name="playername"></p>
-            </h2>
-        </form>
         <div class="yourScore"></div>
+
+        <h2>
+            <!-- <p><input type="text" name="playername"></p> -->
+            <button id="sendData">SUBMIT SCORE AND NAME</button>
+        </h2>
+
+
         <div>
             <a href="javascript:window.location.href=window.location.href">
                 <button id="startbutton" type="button">BACK TO START MENU</button></a>
-
-            <button type="button" form="submitForm">SUBMIT SCORE AND NAME</button>
             <h3 id="highscores">HIGHSCORES</h3>
+            <span id="highscorelist"></span>
 
         </div>
     </div>

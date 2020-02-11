@@ -14,6 +14,8 @@ var L11;
     //export let velocity: Vector;
     L11.score = 1030; //score at game start
     let startbutton;
+    let form;
+    L11.url = "https://eiamitspeck.herokuapp.com/";
     function init(_event) {
         document.getElementById("game").style.display = "none";
         document.getElementById("endscreen").style.display = "none";
@@ -22,6 +24,8 @@ var L11;
     }
     function handleLoad(_event) {
         console.log("starting");
+        let submit = document.querySelector("button[id=sendData]");
+        submit.addEventListener("click", nameScore);
         document.getElementById("startscreen").style.display = "none";
         document.getElementById("game").style.display = "initial";
         let canvas = document.querySelector("canvas");
@@ -34,7 +38,9 @@ var L11;
         canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
         canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
         //submit.addEventListener("click", sendScore);
-        window.setInterval(generateScore, 1000);
+        let highscorebutton = document.getElementById("highscorebutton");
+        highscorebutton.addEventListener("click", gethighscorelist);
+        document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
         for (let i = 0; i < 20; i++) {
             bird = new L11.Bird(2);
             console.log("new bird");
@@ -45,15 +51,11 @@ var L11;
             //  console.log("new flake");
             snowflakeArray.push(snowflake);
         }
-        /* for (let i: number = 0; i < 10; i++) {
-            let pickingbird: PickingBird = new PickingBird(1.8);
-            //  console.log("new bird");
-            pickingbirdArray.push(pickingbird);
-        } */
-        function generateScore() {
-            console.log(L11.score);
-            L11.score--;
-        }
+    }
+    let finalscore = window.setInterval(generateScore, 1000);
+    function generateScore() {
+        console.log(L11.score);
+        L11.score--;
     }
     window.setInterval(update, fps); //update Funktion wird alle 20ms aufgerufen (neuer frame wird generiert)
     function update() {
@@ -125,32 +127,54 @@ var L11;
     function deleteBird(_bird) {
         let index = birdArray.indexOf(_bird);
         birdArray.splice(index, 1); //index sucht an welcher Stelle Bird im Array ist --> löscht an dieser Stelle eine Instanz heraus
-        if (birdArray.length <= 0) {
+        if (birdArray.length <= 19) {
             console.log("ALL BIRDS ARE HIT");
             //location.replace("EndScreen.html"); //Verlinkung zum Endscreen
             showGameOverScreen();
         }
     }
+    //let userName: string = "hallihallo";
     function showGameOverScreen() {
+        let submit = document.querySelector("button[id=sendData]");
+        submit.addEventListener("click", nameScore);
         document.getElementById("game").style.display = "none";
         document.getElementById("endscreen").style.display = "initial";
         node = document.getElementsByClassName("yourScore")[0];
+        //score
+        clearInterval(finalscore);
         scoreToHTML();
+        //sendData(userName, score);
+        console.log(L11.score);
     }
     L11.showGameOverScreen = showGameOverScreen;
     function scoreToHTML() {
         if (!wroteScore) {
             let content = "";
-            content = "Your score: " + L11.score;
+            content = "YOUR SCORE: " + L11.score;
             node.innerHTML += content;
             wroteScore = true;
         }
     }
-    /*async function sendScore(_event: Event): Promise<void> {
-        console.log("SEND SCORE")
-        let query: URLSearchParams = new URLSearchParams;
-        await fetch("index.html?" + query.toString());
-        alert("SENT!")
-    }*/
+    function nameScore() {
+        console.log("end");
+        let insertedname = prompt("Your Score: " + L11.score + "\n Enter your name.");
+        if (insertedname != null) {
+            sendtohighscorelist(insertedname, L11.score);
+        }
+    }
+    async function sendtohighscorelist(_insertedName, _score) {
+        let query = "name=" + _insertedName + "&highScore=" + _score;
+        let response = await fetch(L11.url + "?" + query);
+        alert(response);
+    }
+    async function gethighscorelist() {
+        console.log("Highscores ausgeben");
+        let query = "command=retrieve";
+        let response = await fetch(L11.url + "?" + query);
+        let responseText = await response.text();
+        alert(responseText);
+        let orders = document.querySelector("span#highscorelist");
+        orders.innerText = responseText;
+    }
 })(L11 || (L11 = {}));
 //# sourceMappingURL=Main.js.map

@@ -29,7 +29,7 @@ var L11;
         console.log("Database connection is ", score != undefined);
     }
     async function handleRequest(_request, _response) {
-        console.log("What's up?");
+        console.log("Whuzzup?");
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
@@ -38,8 +38,8 @@ var L11;
             //     _response.write(key + ":" + url.query[key] + "<br/>");
             // }
             if (url.query["command"] == "retrieve") {
-                let report = await retrieveOrders();
-                if (report == "We encountered tecnical problems. Please try again later")
+                let report = await retrieveScore();
+                if (report == "We encountered technical problems. Please try again later")
                     _response.write(report);
                 else
                     _response.write(JSON.stringify(report));
@@ -54,7 +54,7 @@ var L11;
         }
         _response.end();
     }
-    async function retrieveOrders() {
+    async function retrieveScore() {
         // console.log("Asking DB about Orders ", orders.find());
         let cursor = await score.find();
         let answer = await cursor.toArray();
@@ -63,7 +63,7 @@ var L11;
             return answer;
         }
         else
-            return "We encountered tecnical problems. Please try again later";
+            return "We encountered technical problems. Please try again later";
     }
 })(L11 = exports.L11 || (exports.L11 = {}));
 //# sourceMappingURL=Server2.js.map
