@@ -1,13 +1,13 @@
 namespace L11{
     export abstract class Moveable {
         protected position: Vector;
-        public velocity: Vector;
+        protected velocity: Vector;
 
-        constructor(_position?: Vector) {
+        protected constructor(_position?: Vector) {
             
         }
 
-        public move(_timeslice: number): void {
+        protected move(_timeslice: number): void {
             
             //console.log("Moveable move");
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
@@ -25,7 +25,7 @@ namespace L11{
                 this.position.x += crc2.canvas.width + 50;                  
         }
 
-        public draw(): void {
+        protected draw(): void {
           
         }
 

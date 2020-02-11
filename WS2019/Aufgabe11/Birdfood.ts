@@ -1,11 +1,11 @@
 namespace L11 {
     export class Birdfood extends Moveable {
-        position: Vector;
-        velocity: Vector;
-        size: number;
-        foodVerticalPosition: number;
+        public position: Vector;
+        public velocity: Vector;
+        public size: number;
+        public foodVerticalPosition: number;
 
-        constructor(_size: number, _position: Vector) {
+        public constructor(_size: number, _position: Vector) {
 
             super(_position);
             this.position = _position;
@@ -19,7 +19,7 @@ namespace L11 {
         }
 
         
-        draw(): void { 
+        public draw(): void { 
 
             if(this.position.y < this.foodVerticalPosition){
                 this.move(1);

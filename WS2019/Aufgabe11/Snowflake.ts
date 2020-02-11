@@ -1,10 +1,10 @@
 namespace L11{
     export class Snowflake extends Moveable {
-        position: Vector;
-        velocity: Vector;
-        size: number;
+        public position: Vector;
+        public velocity: Vector;
+        public size: number;
 
-        constructor(_size: number, _position?: Vector) {
+        public constructor(_size: number, _position?: Vector) {
 
             super(_position);
 
@@ -20,7 +20,7 @@ namespace L11{
             this.size = _size;
         }
 
-        draw(): void {
+        public draw(): void {
             //console.log("Snowflake draw"); 
         
             crc2.beginPath();

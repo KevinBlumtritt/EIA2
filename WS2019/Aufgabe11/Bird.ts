@@ -15,7 +15,7 @@ namespace L11 {
         public job: TASK = TASK.FLY;
 
 
-        constructor(_size: number, _position?: Vector) {
+        public constructor(_size: number, _position?: Vector) {
 
             super(_position);
 
@@ -36,7 +36,7 @@ namespace L11 {
             this.size = _size;
         }
 
-        draw(): void {
+        public draw(): void {
 
 
             if (this.job == TASK.EAT) {
@@ -190,7 +190,7 @@ namespace L11 {
            crc2.restore();
         }
 
-        isHit(_hotspot: Vector): boolean {
+        public isHit(_hotspot: Vector): boolean {
             let hitsize: number = 24 * this.size;
             let difference: Vector = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
             //console.log(difference);
@@ -198,7 +198,7 @@ namespace L11 {
             return (Math.abs(difference.x) < hitsize && Math.abs(difference.y) < hitsize) //Entfernung 
         }
 
-        isPicking: Function = (): void => { //Sonderfall
+        public isPicking: Function = (): void => { //Sonderfall
             this.velocity = new Vector(0, 0);
         }
     }

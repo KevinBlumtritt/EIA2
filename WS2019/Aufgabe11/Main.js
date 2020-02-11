@@ -32,9 +32,6 @@ var L11;
         if (!canvas)
             return;
         L11.crc2 = canvas.getContext("2d");
-        /* let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=button]");
-        console.log("SUBMIT");
-        // sucht Button vom Typ "submit" im HTML und installiere darauf click-Listener */
         canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
         canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
         //submit.addEventListener("click", sendScore);
@@ -114,7 +111,6 @@ var L11;
         let snowballVector = new L11.Vector(_client.offsetX, _client.offsetY);
         L11.throwSnowball = new L11.Snowball(6, snowballVector);
         window.setTimeout(getBirdHitbox, 320, snowballVector);
-        //nach 320ms wird bird collision abgefragt, snowballVector übergibt Parameter
     }
     function getBirdHitbox(_hotspot) {
         for (let bird of birdArray) {
@@ -129,7 +125,6 @@ var L11;
         birdArray.splice(index, 1); //index sucht an welcher Stelle Bird im Array ist --> löscht an dieser Stelle eine Instanz heraus
         if (birdArray.length <= 19) {
             console.log("ALL BIRDS ARE HIT");
-            //location.replace("EndScreen.html"); //Verlinkung zum Endscreen
             showGameOverScreen();
         }
     }
@@ -163,7 +158,7 @@ var L11;
         }
     }
     async function sendtohighscorelist(_insertedName, _score) {
-        let query = "name=" + _insertedName + "&highScore=" + _score;
+        let query = "name=" + _insertedName + "&score=" + _score;
         let response = await fetch(L11.url + "?" + query);
         console.log(response);
     }
@@ -171,11 +166,17 @@ var L11;
         console.log("Highscores ausgeben");
         let query = "command=retrieve";
         let response = await fetch(L11.url + "?" + query);
-        let responseText = await response.text();
-        //let finalresponse: any[] = JSON.parse(responseText);
-        alert(responseText);
-        let scores = document.querySelector("span#showScores");
-        scores.innerText = responseText;
+        let responseJson = await response.json();
+        for (let index = 0; index < responseJson.length; index++) {
+            delete responseJson[index]["_id"];
+        }
+        let sortedJson = responseJson.sort(({ score: aScore }, { score: bScore }) => bScore - aScore);
+        let output = "";
+        for (let index = 0; index < sortedJson.length; index++) {
+            output += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+        }
+        let scores = document.querySelector("div#showScores");
+        scores.innerText = output;
     }
 })(L11 || (L11 = {}));
 //# sourceMappingURL=Main.js.map

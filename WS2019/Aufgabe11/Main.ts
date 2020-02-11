@@ -46,9 +46,6 @@ namespace L11 {
             return;
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
-        /* let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=button]"); 
-        console.log("SUBMIT");
-        // sucht Button vom Typ "submit" im HTML und installiere darauf click-Listener */
 
         canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
         canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
@@ -159,7 +156,6 @@ namespace L11 {
         throwSnowball = new Snowball(6, snowballVector);
 
         window.setTimeout(getBirdHitbox, 320, snowballVector);
-        //nach 320ms wird bird collision abgefragt, snowballVector übergibt Parameter
 
     }
 
@@ -182,7 +178,6 @@ namespace L11 {
 
         if (birdArray.length <= 19) {
             console.log("ALL BIRDS ARE HIT");
-            //location.replace("EndScreen.html"); //Verlinkung zum Endscreen
             showGameOverScreen();
         }
     }
@@ -226,7 +221,7 @@ namespace L11 {
 
     async function sendtohighscorelist(_insertedName: string, _score: number): Promise<void> {
 
-        let query: string = "name=" + _insertedName + "&highScore=" + _score;
+        let query: string = "name=" + _insertedName + "&score=" + _score;
         let response: Response = await fetch(url + "?" + query);
         console.log(response);
 
@@ -237,14 +232,17 @@ namespace L11 {
         console.log("Highscores ausgeben");
         let query: string = "command=retrieve";
         let response: Response = await fetch(url + "?" + query);
-        let responseText: string = await response.text();
-        //let finalresponse: any[] = JSON.parse(responseText);
-
-        alert(responseText);
-        let scores: HTMLDivElement = <HTMLDivElement>document.querySelector("span#showScores");
-        scores.innerText = responseText;
-
-
+        let responseJson: string[] = await response.json();
+        for (let index = 0; index < responseJson.length; index++) {
+            delete responseJson[index]["_id"];
+        }
+        let sortedJson = responseJson.sort(({ score: aScore }: string, { score: bScore }: string)=> bScore - aScore);
+        let output = "";
+        for (let index = 0; index < sortedJson.length; index++) {
+            output += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+        }
+        let scores: HTMLDivElement = <HTMLDivElement>document.querySelector("div#showScores");
+        scores.innerText = output;
     }
 
 
