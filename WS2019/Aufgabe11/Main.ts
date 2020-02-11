@@ -47,9 +47,8 @@ namespace L11 {
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
 
-        canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
-        canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
-        //submit.addEventListener("click", sendScore);
+        canvas.addEventListener("click", handleLeftClick); 
+        canvas.addEventListener("contextmenu", handleRightClick);
 
         let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
@@ -66,7 +65,7 @@ namespace L11 {
 
         for (let i: number = 0; i < 120; i++) {
             let snowflake: Snowflake = new Snowflake(1.8);
-            //  console.log("new flake");
+    
             snowflakeArray.push(snowflake);
         }
 
@@ -79,7 +78,7 @@ namespace L11 {
         score--;
     }
 
-    window.setInterval(update, fps); //update Funktion wird alle 20ms aufgerufen (neuer frame wird generiert)
+    window.setInterval(update, fps); 
 
     function update(): void {
         // console.log("Update");
@@ -129,9 +128,9 @@ namespace L11 {
             if (isNear(bird.position, _client)) {
                 bird.job = TASK.FLYTOFOOD;
                 bird.velocity = Vector.getDifference(new Vector(throwBirdfood.position.x + Math.random() * (30 - 10) + 10, throwBirdfood.foodVerticalPosition + Math.random() * (30 - 10) + 10), bird.position);
-                bird.velocity.scale(0.01); //unterteilt die Strecke 
+                bird.velocity.scale(0.01); 
                 setTimeout(bird.isPicking, 100 * fps);
-                // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
+               
 
                 if (bird.velocity.x != 0) {
                     bird.job = TASK.EAT;
@@ -174,15 +173,14 @@ namespace L11 {
     function deleteBird(_bird: Bird): void {
 
         let index: number = birdArray.indexOf(_bird);
-        birdArray.splice(index, 1); //index sucht an welcher Stelle Bird im Array ist --> löscht an dieser Stelle eine Instanz heraus
+        birdArray.splice(index, 1); 
 
-        if (birdArray.length <= 19) {
+        if (birdArray.length <= 0) {
             console.log("ALL BIRDS ARE HIT");
             showGameOverScreen();
         }
     }
 
-    //let userName: string = "hallihallo";
 
     export function showGameOverScreen(): void {
 

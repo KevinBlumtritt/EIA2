@@ -51,7 +51,7 @@ export namespace L11 {
 
             if (url.query["command"] == "retrieve") {
                 let report: any[] | string = await retrieveScore();
-                if (report == "We encountered technical problems. Please try again later")
+                if (report == "Please try again later")
                     _response.write(report);
                 else
                     _response.write(JSON.stringify(report));
@@ -68,7 +68,6 @@ export namespace L11 {
     }
 
     async function retrieveScore(): Promise<any[] | string> {
-        // console.log("Asking DB about Orders ", orders.find());
         let cursor: Mongo.Cursor = await score.find().sort({score: -1});;
         let answer: Promise<any[]> = await cursor.toArray();
         console.log("DB CursorToArray", answer);
@@ -76,7 +75,7 @@ export namespace L11 {
             return answer;
         }
         else
-            return "We encountered technical problems. Please try again later";
+            return "Please try again later";
     }
 
 }

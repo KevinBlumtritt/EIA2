@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shoot the Birds</title>
+    <script src="Moveable.js"></script>
+    <script src="Snowball.js"></script>
+    <script src="Birdfood.js"></script>
+    <script src="Vector.js"></script>
+    <script src="Main.js"></script>
+    <script src="Snowflake.js"></script>
+    <script src="Bird.js"></script>
+    <script src="Canvas.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="MenuDesign.css">
+
+<body>
+
+    <div id="startscreen">
+        <h1 id="explanation">
+            SHOOT ALL BIRDS AS FAST AS POSSIBLE!
+        </h1>
+
+            <div class="info">LEFT CLICK: THROW SNOWBALL</div>
+            <div class="info">RIGHT CLICK: THROW COOKIE</div>
+        <button id="startbutton" type="button">START GAME</button>
+        <!-- <button id="highscorebutton" type="button">HIGHSCORES</button> -->
+        <span id="highscorelist"></span>
+    </div>
+
+
+    <div id="game">
+        <canvas width=1200 height=700></canvas>
+    </div>
+
+
+    <div id="endscreen">
+        <h1 id="explanation">
+            WELL DONE!
+        </h1>
+        <div class="yourScore"></div>
+
+            <button id="sendData">SUBMIT SCORE AND NAME</button>
+
+            <a href="javascript:window.location.href=window.location.href">
+                <button id="startbutton" type="button">BACK TO START MENU</button></a>
+            <button id="highscorelistbutton" type="button">HIGHSCORES</button>
+            <div id="showScores"></div>
+
+        
+    </div>
+
+</body>
+
+</html>

@@ -16,7 +16,8 @@
     width: 40%;
     margin-left: 30%;
     margin-right: 30%;
-    margin-bottom: 1.5%;
+	margin-bottom: 1.5%;
+	margin-top: 1.5%;
 }
 
 #startbutton:hover {
@@ -29,6 +30,13 @@
 	top:1px;
 }
 
+.info {
+	text-align: center;
+    font-family:Arial;
+	font-size:1.2em;
+    font-weight:bold;
+    color:#ffffff;
+}
 
 #highscorelistbutton {
 	box-shadow:inset 0px 1px 0px 0px #fafafa;
@@ -48,7 +56,8 @@
     width: 30%;
     margin-left: 35%;
     margin-right: 35%;
-    margin-bottom: 1.5%;
+	margin-bottom: 1.5%;
+	margin-top: 1.5%;
 }
 
 #sendData {
@@ -124,4 +133,9 @@ html{
 
 #showScores {
 	text-align: center;
+	font-family:Arial;
+	font-size:1em;
+	color:#ffffff; 
+	font-weight:bold;
+	text-shadow:0px 1px 0px #a8a8a8;
 }

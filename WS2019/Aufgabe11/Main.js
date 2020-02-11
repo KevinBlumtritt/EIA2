@@ -32,9 +32,8 @@ var L11;
         if (!canvas)
             return;
         L11.crc2 = canvas.getContext("2d");
-        canvas.addEventListener("click", handleLeftClick); //bei Linksklick wird "handleLeftClick" aufgerufen
-        canvas.addEventListener("contextmenu", handleRightClick); //bei Rechtsklick wird "handleRightClick" aufgerufen
-        //submit.addEventListener("click", sendScore);
+        canvas.addEventListener("click", handleLeftClick);
+        canvas.addEventListener("contextmenu", handleRightClick);
         let highscorebutton = document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
@@ -45,7 +44,6 @@ var L11;
         }
         for (let i = 0; i < 120; i++) {
             let snowflake = new L11.Snowflake(1.8);
-            //  console.log("new flake");
             snowflakeArray.push(snowflake);
         }
     }
@@ -54,7 +52,7 @@ var L11;
         console.log(L11.score);
         L11.score--;
     }
-    window.setInterval(update, fps); //update Funktion wird alle 20ms aufgerufen (neuer frame wird generiert)
+    window.setInterval(update, fps);
     function update() {
         // console.log("Update");
         L11.crc2.clearRect(0, 0, L11.crc2.canvas.width, L11.crc2.canvas.height);
@@ -92,9 +90,8 @@ var L11;
             if (isNear(bird.position, _client)) {
                 bird.job = L11.TASK.FLYTOFOOD;
                 bird.velocity = L11.Vector.getDifference(new L11.Vector(throwBirdfood.position.x + Math.random() * (30 - 10) + 10, throwBirdfood.foodVerticalPosition + Math.random() * (30 - 10) + 10), bird.position);
-                bird.velocity.scale(0.01); //unterteilt die Strecke 
+                bird.velocity.scale(0.01);
                 setTimeout(bird.isPicking, 100 * fps);
-                // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
                 if (bird.velocity.x != 0) {
                     bird.job = L11.TASK.EAT;
                 }
@@ -122,13 +119,12 @@ var L11;
     }
     function deleteBird(_bird) {
         let index = birdArray.indexOf(_bird);
-        birdArray.splice(index, 1); //index sucht an welcher Stelle Bird im Array ist --> löscht an dieser Stelle eine Instanz heraus
-        if (birdArray.length <= 19) {
+        birdArray.splice(index, 1);
+        if (birdArray.length <= 0) {
             console.log("ALL BIRDS ARE HIT");
             showGameOverScreen();
         }
     }
-    //let userName: string = "hallihallo";
     function showGameOverScreen() {
         let submit = document.querySelector("button[id=sendData]");
         submit.addEventListener("click", nameAndScore);

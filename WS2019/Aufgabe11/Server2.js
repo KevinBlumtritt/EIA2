@@ -39,7 +39,7 @@ var L11;
             // }
             if (url.query["command"] == "retrieve") {
                 let report = await retrieveScore();
-                if (report == "We encountered technical problems. Please try again later")
+                if (report == "Please try again later")
                     _response.write(report);
                 else
                     _response.write(JSON.stringify(report));
@@ -55,7 +55,6 @@ var L11;
         _response.end();
     }
     async function retrieveScore() {
-        // console.log("Asking DB about Orders ", orders.find());
         let cursor = await score.find().sort({ score: -1 });
         ;
         let answer = await cursor.toArray();
@@ -64,7 +63,7 @@ var L11;
             return answer;
         }
         else
-            return "We encountered technical problems. Please try again later";
+            return "Please try again later";
     }
 })(L11 = exports.L11 || (exports.L11 = {}));
 //# sourceMappingURL=Server2.js.map
